@@ -20,9 +20,8 @@ class _CalculatorCoreState extends State<CalculatorCore> {
   List<double> stack = [];
 
   void typeKey(int digit) {
-    setState(() {
-      number = '$number${digit.toString()}';
-    });
+    number = '$number${digit.toString()}';
+    //setState(() { });
   }
 
   void doBinaryOp(OpFunc fnc) {
@@ -102,14 +101,14 @@ class _CalculatorCoreState extends State<CalculatorCore> {
       return;
     }
 
-    setState(() {
-      int lastCharIndex = number.length - 1;
-      if (number[lastCharIndex] == '.') {
-        hasDot = false;
-      }
-      number = number.substring(0, lastCharIndex);
-      //widget.onEntryChanged(number);
-    });
+    //setState(() {
+    int lastCharIndex = number.length - 1;
+    if (number[lastCharIndex] == '.') {
+      hasDot = false;
+    }
+    number = number.substring(0, lastCharIndex);
+    //widget.onEntryChanged(number);
+    //});
   }
 
   void typeDot() {
@@ -166,19 +165,19 @@ class _CalculatorCoreState extends State<CalculatorCore> {
                 fontSize: 20,
               ),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(7);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(7);
+                      }),
                   text: '7'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(8);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(8);
+                      }),
                   text: '8'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(9);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(9);
+                      }),
                   text: '9'),
               CalculatorButton(
                   onPressed: () {
@@ -186,19 +185,19 @@ class _CalculatorCoreState extends State<CalculatorCore> {
                   },
                   text: '/'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(4);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(4);
+                      }),
                   text: '4'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(5);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(5);
+                      }),
                   text: '5'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(6);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(6);
+                      }),
                   text: '6'),
               CalculatorButton(
                   onPressed: () {
@@ -206,19 +205,19 @@ class _CalculatorCoreState extends State<CalculatorCore> {
                   },
                   text: '*'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(1);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(1);
+                      }),
                   text: '1'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(2);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(2);
+                      }),
                   text: '2'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(3);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(3);
+                      }),
                   text: '3'),
               CalculatorButton(
                   onPressed: () {
@@ -226,9 +225,9 @@ class _CalculatorCoreState extends State<CalculatorCore> {
                   },
                   text: '-'),
               CalculatorButton(
-                  onPressed: () {
-                    typeKey(0);
-                  },
+                  onPressed: () => setState(() {
+                        typeKey(0);
+                      }),
                   text: '0'),
               CalculatorButton(
                   onPressed: () {
@@ -236,9 +235,9 @@ class _CalculatorCoreState extends State<CalculatorCore> {
                   },
                   text: '-'),
               CalculatorButton(
-                onPressed: () {
+                onPressed: () => setState(() {
                   backSpace();
-                },
+                }),
                 text: '\u2B05',
                 fontSize: 44,
               ),
