@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 class StackView extends StatelessWidget {
-  const StackView({super.key, required this.stack, required this.size});
+  const StackView(
+      {super.key,
+      required this.stack,
+      required this.size,
+      required this.onSelect});
 
   final List<double> stack;
   final Size size;
-
+  final void Function(double) onSelect;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,10 +32,16 @@ class StackView extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 30),
                 height: 24,
                 color: Colors.amber,
-                child: Text(
-                  '${stack[index]}',
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                child: TextButton(
+                  onPressed: () {
+                    onSelect(stack[index]);
+                  },
+                  //style: ButtonStyle(),
+                  child: Text(
+                    '${stack[index]}',
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ));
           },
         ),

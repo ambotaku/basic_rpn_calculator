@@ -96,6 +96,13 @@ class _CalculatorCoreState extends State<CalculatorCore> {
     }
   }
 
+  void pushSelected(double value) {
+    setState(() {
+      stack.add(value);
+      number = '';
+    });
+  }
+
   void backSpace() {
     if (number.isEmpty) {
       return;
@@ -126,6 +133,9 @@ class _CalculatorCoreState extends State<CalculatorCore> {
           child: StackView(
             stack: stack,
             size: widget.size,
+            onSelect: (double sel) {
+              pushSelected(sel);
+            },
           ),
         ),
         EntryLine(number: number, size: widget.size),
