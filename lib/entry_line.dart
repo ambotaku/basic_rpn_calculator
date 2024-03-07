@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
 class EntryLine extends StatelessWidget {
-  const EntryLine({
-    super.key,
-    required this.number,
-  });
+  const EntryLine({super.key, required this.number, required this.size});
 
   final String number;
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerRight,
-      width: 400,
+      width: size.width,
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(

@@ -10,13 +10,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    Size size = MediaQuery.of(context).size;
+    if (size.width > 400) {
+      size = Size(400, size.height);
+    }
+
+    return MaterialApp(
       title: 'Basic Calculator',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: CalculatorCore(
-            size: 400,
+            size: size,
           ),
         ),
       ),

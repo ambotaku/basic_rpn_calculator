@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:basic_rpn_calculator/calculator_button.dart';
 import 'package:basic_rpn_calculator/entry_line.dart';
 import 'package:basic_rpn_calculator/stack_view.dart';
@@ -8,7 +9,7 @@ typedef OpFunc = double Function(double, double);
 class CalculatorCore extends StatefulWidget {
   const CalculatorCore({super.key, required this.size});
 
-  final double size;
+  final Size size;
 
   @override
   State<CalculatorCore> createState() => _CalculatorCoreState();
@@ -17,11 +18,11 @@ class CalculatorCore extends StatefulWidget {
 class _CalculatorCoreState extends State<CalculatorCore> {
   String number = '';
   bool hasDot = false;
-  List<double> stack = [];
+  List<double> stack =
+      List<double>.generate(20, (int n) => sqrt(n), growable: true);
 
   void typeKey(int digit) {
     number = '$number${digit.toString()}';
-    //setState(() { });
   }
 
   void doBinaryOp(OpFunc fnc) {
@@ -125,13 +126,19 @@ class _CalculatorCoreState extends State<CalculatorCore> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        StackView(stack: stack),
-        EntryLine(number: number),
+        Expanded(
+          child: StackView(
+            stack: stack,
+            size: widget.size,
+          ),
+        ),
+        EntryLine(number: number, size: widget.size),
         Container(
           width: 400,
-          height: 500,
-          decoration: const BoxDecoration(
+          height: 400,
+          decoration: BoxDecoration(
             color: Colors.grey,
+            border: Border.all(color: Colors.black, width: 2),
           ),
           child: GridView.count(
             primary: false,
