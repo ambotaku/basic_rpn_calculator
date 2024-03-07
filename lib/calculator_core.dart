@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:basic_rpn_calculator/calculator_button.dart';
 import 'package:basic_rpn_calculator/entry_line.dart';
 import 'package:basic_rpn_calculator/stack_view.dart';
@@ -19,7 +18,7 @@ class _CalculatorCoreState extends State<CalculatorCore> {
   String number = '';
   bool hasDot = false;
   List<double> stack = [];
-//      List<double>.generate(20, (int n) => sqrt(n), growable: true);
+  // List<double> stack = List<double>.generate(20, (int n) => sqrt(n), growable: true);
 
   void typeKey(int digit) {
     number = '$number${digit.toString()}';
@@ -64,7 +63,7 @@ class _CalculatorCoreState extends State<CalculatorCore> {
       case 'pop':
         setState(() {
           if (stack.isNotEmpty) {
-            stack.removeLast();
+            stack.removeAt(stack.length - 1);
           }
         });
         break;
@@ -102,14 +101,11 @@ class _CalculatorCoreState extends State<CalculatorCore> {
       return;
     }
 
-    //setState(() {
     int lastCharIndex = number.length - 1;
     if (number[lastCharIndex] == '.') {
       hasDot = false;
     }
     number = number.substring(0, lastCharIndex);
-    //widget.onEntryChanged(number);
-    //});
   }
 
   void typeDot() {
@@ -160,7 +156,7 @@ class _CalculatorCoreState extends State<CalculatorCore> {
                   text: 'swap'),
               CalculatorButton(
                   onPressed: () {
-                    typeOp('swap');
+                    typeOp('pop');
                   },
                   fontSize: 20,
                   text: 'pop'),
