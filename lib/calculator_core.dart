@@ -135,7 +135,7 @@ class _CalculatorCoreState extends State<CalculatorCore> {
         EntryLine(number: number, size: widget.size),
         Container(
           width: 400,
-          height: 400,
+          height: 500,
           decoration: BoxDecoration(
             color: Colors.grey,
             border: Border.all(color: Colors.black, width: 2),
