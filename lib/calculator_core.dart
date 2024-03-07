@@ -18,8 +18,8 @@ class CalculatorCore extends StatefulWidget {
 class _CalculatorCoreState extends State<CalculatorCore> {
   String number = '';
   bool hasDot = false;
-  List<double> stack =
-      List<double>.generate(20, (int n) => sqrt(n), growable: true);
+  List<double> stack = [];
+//      List<double>.generate(20, (int n) => sqrt(n), growable: true);
 
   void typeKey(int digit) {
     number = '$number${digit.toString()}';
