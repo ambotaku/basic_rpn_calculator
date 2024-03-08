@@ -14,13 +14,14 @@ class EntryLine extends StatelessWidget {
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.amber,
+        color: Colors.teal[400],
         border: Border.all(color: Colors.black),
       ),
       child: Text(
         number,
         textAlign: TextAlign.end,
-        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        style: const TextStyle(
+            fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
       ),
     );
   }

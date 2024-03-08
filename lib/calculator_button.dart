@@ -20,13 +20,13 @@ class CalculatorButton extends StatelessWidget {
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.0),
-            side: const BorderSide(color: Colors.red),
+            side: const BorderSide(color: Colors.black),
           ),
         ),
         backgroundColor: MaterialStateProperty.resolveWith<MaterialColor>(
             (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) return Colors.teal;
-          return Colors.indigo;
+          if (states.contains(MaterialState.hovered)) return Colors.purple;
+          return Colors.deepPurple;
         }),
       ),
       child: Text(
@@ -34,7 +34,7 @@ class CalculatorButton extends StatelessWidget {
         style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            color: Colors.amber),
+            color: Colors.white),
       ),
     );
   }

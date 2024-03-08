@@ -16,36 +16,29 @@ class StackView extends StatelessWidget {
       alignment: Alignment.centerRight,
       width: size.width,
       decoration: BoxDecoration(
-        color: Colors.amber,
+        color: Colors.teal[200],
         border: Border.all(color: Colors.black),
       ),
-      child: Scrollbar(
-        trackVisibility: true,
-        thickness: 20,
-        radius: const Radius.circular(20),
-        //interactive: true,
-        child: ListView.builder(
+      child: ListView.builder(
           itemCount: stack.length,
           itemBuilder: (BuildContext context, index) {
             return Container(
-                alignment: Alignment.bottomRight,
-                padding: const EdgeInsets.only(right: 30),
-                height: 24,
-                color: Colors.amber,
-                child: TextButton(
-                  onPressed: () {
-                    onSelect(stack[index]);
-                  },
-                  //style: ButtonStyle(),
-                  child: Text(
-                    '${stack[index]}',
+              alignment: Alignment.bottomRight,
+              padding: const EdgeInsets.only(right: 10),
+              height: 30,
+              color: Colors.teal[400],
+              child: InkWell(
+                onTap: () {
+                  onSelect(stack[index]);
+                },
+                child: Text('${stack[index]} \u21b4',
                     style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ));
-          },
-        ),
-      ),
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+              ),
+            );
+          }),
     );
   }
 }
